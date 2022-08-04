@@ -18,10 +18,6 @@ from sklearn.preprocessing import StandardScaler
 
 LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 PROJECT_DIR = Path(__file__).resolve().parents[2]
-VALIDATION_DATA = "data\\processed\\validation_data.csv"
-LGREG_C = 0.5
-LGREG_CLASS_WEIGHT = "balanced"
-LGREG_PENALTY = "l1"
 
 
 def load_data(f_path: dict) -> pd.DataFrame:
