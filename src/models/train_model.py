@@ -13,7 +13,7 @@ import yaml
 from imblearn.over_sampling import RandomOverSampler
 from imblearn.under_sampling import RandomUnderSampler
 from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold
 from sklearn.preprocessing import StandardScaler
 
 LOG_FMT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -164,6 +164,10 @@ def train_model_helper(train_params, X, y, scaler):
         random_state=train_params["prepare"]["seed"],
     )
     clf = train_model(train_params, X_train, y_train)
+    skf = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+    scores = cross_val_score(clf, X_train, y_train, cv=skf, n_jobs=-1)
+    print(f'cross validation scores: {scores}')
+    print(f'AVG: {np.average(scores)}')
 
     logging.info("Saving model")
     save_model(train_params, clf, scaler)
