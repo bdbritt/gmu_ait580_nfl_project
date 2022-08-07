@@ -1,0 +1,4 @@
+outs:
+- md5: c740a6b7ce3053889b4240a6a2dfbdc0
+  size: 1852
+  path: logreg_clf.pkl
