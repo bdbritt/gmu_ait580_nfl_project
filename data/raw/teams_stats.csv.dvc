@@ -1,0 +1,4 @@
+outs:
+- md5: 8d666227f767dc81ea92171b36a5b158
+  size: 60019
+  path: teams_stats.csv
